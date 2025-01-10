@@ -1,0 +1,37 @@
+name: Build Windows Package
+
+on:
+  push:
+    branches:
+      - main  # 你可以选择合适的分支
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13'  # 设置 Python 版本
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "::add-path::${HOME}/.local/bin"
+
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      - name: Run PyInstaller
+        run: |
+          poetry run pyinstaller --onefile --strip main.py
+
+      - name: Upload Windows executable
+        uses: actions/upload-artifact@v2
+        with:
+          name: pyqt-executable
+          path: dist/main.exe  # 这里假设输出文件是 main.exe
