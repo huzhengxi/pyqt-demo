@@ -31,7 +31,7 @@ jobs:
           poetry run pyinstaller --onefile --strip main.py
 
       - name: Upload Windows executable
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # 更新为 v3 版本
         with:
           name: pyqt-executable
           path: dist/main.exe  # 这里假设输出文件是 main.exe
