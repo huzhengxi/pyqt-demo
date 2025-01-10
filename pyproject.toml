@@ -1,0 +1,21 @@
+[project]
+name = "pyqt"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "虎正玺",email = "15264316179@163.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "pyqt5 (>=5.15.11,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.11.1"
+
